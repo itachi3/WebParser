@@ -1,0 +1,22 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true"
+         monitoring="autodetect" dynamicConfig="true">
+
+    <!-- By default, Ehcache stored the cached files in temp folder. -->
+    <!-- <diskStore path="java.io.tmpdir" /> -->
+
+    <diskStore path="/tmp/"/>
+
+    <cache name="searched-urls"
+           maxElementsInMemory="100"
+           maxElementsOnDisk="1000"
+           overflowToDisk="true"
+           eternal="false"
+           diskPersistent="true"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300" timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+    </cache>
+
+</ehcache>

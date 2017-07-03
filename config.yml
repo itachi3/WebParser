@@ -1,0 +1,28 @@
+version: 0.1
+
+server:
+    applicationConnectors:
+      - type: http
+        port: 8090
+    adminConnectors:
+      - type: http
+        port: 8091
+    requestLog:
+      appenders:
+        - type: console
+          threshold: ALL
+          logFormat: '%h [%date{ISO8601}] "%r" %s %b %D [%i{User-Agent}]'
+
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO,
+  # DEBUG, TRACE, or ALL.
+  level: ERROR
+
+  loggers:
+    io.dropwizard: ERROR
+
+  appenders:
+    - type: console
+      threshold: ERROR
+      logFormat: "%-5level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n %throwable{3}"

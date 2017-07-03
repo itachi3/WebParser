@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-xs-12" style="text-align:center;font-size:100px;">
+        <img src="http://www.scout24.com/en/ResourceImage.aspx?raid=1129778" style="margin-top:20px;height:150px;">
+    </div>
+</div>
+<div class="row" style="margin-top:20px;margin-bottom:40px">
+    <div class="col-lg-6 col-md-offset-3">
+        <div class="input-group">
+            <input type="text" ng-model="url" placeholder="Enter URL..."
+                   uib-typeahead="address for address in getLocation($viewValue)" class="form-control">
+            <span class="input-group-btn">
+		<button class="btn btn-primary" type="button" ng-click="performSearch(url)">Go!</button>
+		
+		
+		<button class="btn btn-default" ng-click="clear()" type="button">Clear</button>
+	    </span>
+        </div>
+        <!-- /input-group -->
+        <h5 ng-show="fetching">Fetching...</h5>
+    </div>
+
+</div>
+<hr>
+<!-- To add more ROWS duplicate entire block below -->
+<div class="row" style="margin-top:30px;font-size:20px;">
+    <div class="col-xs-10 col-md-offset-1" ng-show="alert.msg && alert.msg.length>0">
+        <div uib-alert ng-class="'alert-danger'">{{alert.msg}}</div>
+    </div>
+    <div ng-show="response">
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Title
+                </div>
+                <div class="col-xs-6 ellipsis values" uib-tooltip="{{response.title}}">
+                    {{response.title}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Redirects
+                </div>
+                <div class="col-xs-6 values">
+                    {{response.redirects}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Login form
+                </div>
+                <div class="col-xs-6 values">
+                    {{response.loginForm}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Signup form
+                </div>
+                <div class="col-xs-6 values">
+                    {{response.signUpForm}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Original URL
+                </div>
+                <div class="col-xs-6 ellipsis values" uib-tooltip="{{response.originalUrl}}">
+                    {{response.originalUrl}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Final URL
+                </div>
+                <div class="col-xs-6 ellipsis values" uib-tooltip="{{response.finalUrl}}">
+                    {{response.finalUrl}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Document Type
+                </div>
+                <div class="col-xs-6 ellipsis values">
+                    {{response.documentType}}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    Internal links
+                </div>
+                <div class="col-xs-6 ellipsis values">
+                    <a ui-sref="links({url:url,type:'Internal'})" style="text-decoration:underline;">{{response.hyperLinks.internal.count}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-5 col-md-offset-1" style="margin-top:15px;">
+            <div class="row">
+                <div class="col-xs-6 header">
+                    External links
+                </div>
+                <div class="col-xs-6 ellipsis values">
+                    <a ui-sref="links({url:url,type:'External'})" style="text-decoration:underline;">{{response.hyperLinks.external.count}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

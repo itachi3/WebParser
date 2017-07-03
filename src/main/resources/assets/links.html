@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <a ui-sref="home({url:url})">< Go back</a>
+    </div>
+    <div class="col-xs-12 col-md-12" style="margin-top:15px;">
+        <div class="row">
+            <div class="col-xs-6 header">
+                <h2 style="margin-top:0px;">{{type}} links</h2>
+                <h5 ng-show="fetching">Fetching...</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 ellipsis">
+                <ul>
+                    <li ng-repeat="link in links track by $index"><span
+                            style="max-width:1000px;display:inline-block;position:relative;top:4px;" class="ellipsis">{{link}}</span>
+                        <span class="redirect" ng-show="$index<15">Redirect: {{getRedirect(link,'redirect')}}</span>
+                        <span class="secure" ng-show="$index<15">Secure: {{getRedirect(link,'secure')}}</span>
+                        <span class="reason" ng-show="$index<15">Reason: {{getRedirect(link,'reason')}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
